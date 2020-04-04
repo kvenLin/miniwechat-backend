@@ -1,0 +1,25 @@
+server:
+  port: 8203
+base-url: http://clf:clf123@localhost:8761
+spring:
+  rabbitmq:                                #本地环境不需要配置mq
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  application:
+    name: auth-server # 注意这里的服务名必须和配置文件的服务名相同才能获取配置文件
+  cloud:
+    config:
+      uri: ${base-url}
+      profile: dev
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: ${base-url}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

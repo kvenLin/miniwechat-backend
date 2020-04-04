@@ -1,10 +1,13 @@
 package com.clf.cloud.userserver.controller;
 
+import com.clf.cloud.api.user.UserFeignApis;
+import com.clf.cloud.api.vo.UsersVO;
+import com.clf.cloud.common.vo.BaseResponseVO;
 import com.clf.cloud.userserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,17 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/users")
 @RefreshScope
-public class UserController {
+public class UserController implements UserFeignApis {
 
     @Autowired
     private UserService userService;
 
-    @Value("${testValue}")
-    private String testValue;
-
-    @GetMapping("testValue")
-    public String testValue() {
-        return testValue;
+    @GetMapping("/{userId}")
+    @Override
+    public BaseResponseVO<UsersVO> queryUserInfo(@PathVariable("userId") String userId) {
+        return BaseResponseVO.success(userId);
     }
-
 }

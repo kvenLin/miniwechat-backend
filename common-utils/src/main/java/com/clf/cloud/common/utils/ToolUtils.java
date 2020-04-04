@@ -6,6 +6,7 @@ import com.clf.cloud.common.exception.CommonException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -73,4 +74,8 @@ public class ToolUtils {
     return date;
   }
 
+  public static int randomNum(int high) {
+    Random random = new Random();
+    return random.nextInt(high);
+  }
 }

@@ -1,0 +1,9 @@
+zuul:
+  prefix: "/miniwechat/" #统一前缀
+  routes: ## 路由规则
+    user-service:
+      path: /users/**  # 匹配规则
+      serviceId : user-service # application.name --> 服务名称 service-id
+      retryable: true  # 是否允许重试, 饿汉模式
+  sensitive-headers: # Zuul默认会过滤一些头信息, 需要进行过滤设置, 如果为空表示所有header都可以通过
+#  ignored-headers: #和sensitive-headers功能相反, 表示经过配置的才是可以放行的, 没有配置不能放行

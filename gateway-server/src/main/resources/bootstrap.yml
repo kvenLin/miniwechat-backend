@@ -9,8 +9,9 @@ spring:
     name: gateway-server # 注意这里的服务名必须和配置文件的服务名相同才能获取配置文件
   cloud:
     config:
-      uri: ${base-url}/config/
-      profile: pro
+      uri: ${base-url}
+      profile: dev
+      name: ${spring.application.name}, datasource-common, redis-common, netty-common
       label: master
 eureka:
   client:

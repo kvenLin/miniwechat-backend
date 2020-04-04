@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="auth_query">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="AuthQueryDao" />
+              <option name="daoPackage" value="com.clf.cloud.gatewayserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="AuthQuery" />
+              <option name="modelPackage" value="com.clf.cloud.gatewayserver.domain" />
+              <option name="name" value="auth_query" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/gateway-server" />
+              <option name="tableName" value="auth_query" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="chat_msg">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ChatMsgDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ChatMsg" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="chat_msg" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="chat_msg" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="contact_user">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ContactUserDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ContactUser" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="contact_user" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="contact_user" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="friends_request">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="FriendsRequestDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="FriendsRequest" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="friends_request" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="friends_request" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="my_friends">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="MyFriendsDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="MyFriends" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="my_friends" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="my_friends" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="user_contact_rel">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="UserContactRelDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="UserContactRel" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="user_contact_rel" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="user_contact_rel" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="users">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="UsersDao" />
+              <option name="daoPackage" value="com.clf.cloud.userserver.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Users" />
+              <option name="modelPackage" value="com.clf.cloud.userserver.domain" />
+              <option name="name" value="users" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/user-server" />
+              <option name="tableName" value="users" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mappers" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
