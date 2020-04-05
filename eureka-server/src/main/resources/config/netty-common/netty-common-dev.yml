@@ -1,4 +1,0 @@
-service1: #后续如果扩展服务则只需要进行添加配置
-  port: 8088 #便于在netty服务端进行配置
-  url: ws://localhost:8088/ws #提供给网关返回前端使用
-totalUrls: ${service1.url} #后续服务的url以","隔开

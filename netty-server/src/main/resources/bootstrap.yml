@@ -14,7 +14,7 @@ spring:
     name: netty-server
   cloud:
     config:
-      uri: ${base-url}
+      uri: ${base-url}/config
       profile: dev
       name: ${spring.application.name},netty-common
       label: master

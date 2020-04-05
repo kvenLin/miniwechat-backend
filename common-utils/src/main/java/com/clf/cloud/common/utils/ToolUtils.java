@@ -74,6 +74,11 @@ public class ToolUtils {
     return date;
   }
 
+  /**
+   * 随机获取high以内的一个数值
+   * @param high
+   * @return
+   */
   public static int randomNum(int high) {
     Random random = new Random();
     return random.nextInt(high);

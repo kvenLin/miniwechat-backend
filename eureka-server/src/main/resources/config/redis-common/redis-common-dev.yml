@@ -1,8 +1,0 @@
-#redis
-redis:
-  host: localhost
-  port: 6379
-  timeout: 10
-  poolMaxTotal: 1000
-  poolMaxIdle: 500
-  poolMaxWait: 500

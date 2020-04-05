@@ -20,6 +20,7 @@
       <module name="api" target="1.8" />
       <module name="authorization-server" target="1.8" />
       <module name="common-utils" target="1.8" />
+      <module name="config-server" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="gateway-server" target="1.8" />
       <module name="miniwechat" target="1.8" />
@@ -32,6 +33,7 @@
       <module name="api" options="-parameters" />
       <module name="authorization-server" options="-parameters" />
       <module name="common-utils" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
       <module name="miniwechat" options="" />
