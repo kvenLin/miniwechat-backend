@@ -24,6 +24,7 @@
         <guava.version>28.1-jre</guava.version>
         <fastjson.version>1.2.60</fastjson.version>
         <jjwt.version>0.9.0</jjwt.version>
+        <fast-client.version>1.26.2</fast-client.version>
     </properties>
 
     <dependencies>
@@ -65,6 +66,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fast-client.version}</version>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>netty</artifactId>

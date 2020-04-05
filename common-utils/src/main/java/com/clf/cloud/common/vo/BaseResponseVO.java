@@ -46,4 +46,8 @@ public class BaseResponseVO<T> {
     public static BaseResponseVO error(ErrorEnum error) {
         return BaseResponseVO.builder().code(error.getCode()).msg(error.getMsg()).build();
     }
+
+    public static BaseResponseVO errorMsg(String msg){
+        return new BaseResponseVO(500, msg, null);
+    }
 }
