@@ -14,4 +14,6 @@ public interface UserContactRelDao {
     int updateByPrimaryKeySelective(UserContactRel record);
 
     int updateByPrimaryKey(UserContactRel record);
+
+    UserContactRel selectByUserIdAndPhone(String userId, String phone);
 }

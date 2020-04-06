@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan(basePackages = "com.clf.cloud")
+@ComponentScan(basePackages = {"com.clf.cloud", "org.n3r.idworker"})
 public class UserServerApplication {
 
     public static void main(String[] args) {

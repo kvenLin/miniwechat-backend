@@ -14,4 +14,6 @@ public interface ContactUserDao {
     int updateByPrimaryKeySelective(ContactUser record);
 
     int updateByPrimaryKey(ContactUser record);
+
+    ContactUser selectByPhone(String phone);
 }

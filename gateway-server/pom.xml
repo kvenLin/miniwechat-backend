@@ -63,8 +63,7 @@
         </dependency>
 
 
-        <!--redis-->
-        <!--　redis　-->
+        <!-- redis　-->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
