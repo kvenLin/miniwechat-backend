@@ -1,7 +1,6 @@
 package com.clf.cloud.userserver.utils;
 
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
@@ -9,7 +8,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-@Service
 public class FileUtils {
 
 	private static class BASE64DecodedMultipartFile implements MultipartFile {
