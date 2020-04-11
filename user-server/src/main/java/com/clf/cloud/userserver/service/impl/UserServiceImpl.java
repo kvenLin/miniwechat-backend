@@ -1,6 +1,5 @@
 package com.clf.cloud.userserver.service.impl;
 
-import com.clf.cloud.api.netty.ChatMsgNio;
 import com.clf.cloud.common.enums.MsgSignFlagEnum;
 import com.clf.cloud.common.enums.SearchFriendsStatusEnum;
 import com.clf.cloud.common.utils.MD5Utils;
@@ -212,26 +211,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<MyFriendsVO> queryFriends(String userId) {
         return usersDao.queryMyFriends(userId);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    @Override
-    public String saveMsg(ChatMsgNio chatMsgNio) {
-        ChatMsg msg = new ChatMsg();
-        msg.setId(sid.nextShort());
-        msg.setSendUserId(chatMsgNio.getSenderId());
-        msg.setAcceptUserId(chatMsgNio.getReceiverId());
-        msg.setMsg(chatMsgNio.getMsg());
-        msg.setCreateTime(new Date());
-        msg.setSignFlag(MsgSignFlagEnum.unsign.type);
-        chatMsgDao.insert(msg);
-        return msg.getId();
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    @Override
-    public void updateMsgSigned(List<String> msgIdList) {
-        chatMsgDao.batchUpdateMsgSigned(msgIdList);
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)

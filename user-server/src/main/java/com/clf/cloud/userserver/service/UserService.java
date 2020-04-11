@@ -91,19 +91,6 @@ public interface UserService {
     List<MyFriendsVO> queryFriends(String userId);
 
     /**
-     * 保存消息
-     * @param chatMsgNio
-     * @return
-     */
-    String saveMsg(ChatMsgNio chatMsgNio);
-
-    /**
-     * 批量签收消息
-     * @param msgIdList
-     */
-    void updateMsgSigned(List<String> msgIdList);
-
-    /**
      * 获取未签收的消息列表
      * @param acceptUserId
      * @return

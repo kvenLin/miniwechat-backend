@@ -33,3 +33,12 @@ redis:
   poolMaxTotal: 1000
   poolMaxIdle: 500
   poolMaxWait: 500
+# ===================================================================
+# 分布式文件系统FDFS配置
+# ===================================================================
+fdfs:
+  so-timeout: 15001
+  connect-timeout: 15001
+  tracker-list[0]: 121.36.108.189:22122
+tmpFilePath: "/Users/mac/Downloads/tmp/"
+defaultImage: "M00/00/00/rBDLCV5GQmOAcsypAAALkzq5T6A811_80x80.png"

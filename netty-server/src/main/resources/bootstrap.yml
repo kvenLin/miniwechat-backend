@@ -16,7 +16,7 @@ spring:
     config:
       uri: ${base-url}/config
       profile: dev
-      name: ${spring.application.name},netty-common
+      name: ${spring.application.name},netty-common,datasource-common
       label: master
 eureka:
   client:
