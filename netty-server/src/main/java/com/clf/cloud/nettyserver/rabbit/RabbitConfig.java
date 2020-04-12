@@ -1,4 +1,4 @@
-package com.clf.cloud.nettyserver.config;
+package com.clf.cloud.nettyserver.rabbit;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

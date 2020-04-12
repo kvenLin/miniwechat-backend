@@ -2,6 +2,7 @@ package com.clf.cloud.nettyserver.config;
 
 import com.clf.cloud.common.enums.MsgActionEnum;
 import com.clf.cloud.common.utils.SpringUtils;
+import com.clf.cloud.nettyserver.rabbit.Sender;
 import com.clf.cloud.nettyserver.service.ChatMsgService;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -57,12 +58,10 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         } else if(action == MsgActionEnum.CHAT.type) {
             //2.2. 聊天类型的消息, 把聊天记录保存数据库, 同时标记消息的签收状态[未签收]
             ChatMsgNio chatMsgNio = dataContent.getChatMsgNio();
-            String msgText = chatMsgNio.getMsg();
             String receiverId = chatMsgNio.getReceiverId();
-            String senderId = chatMsgNio.getSenderId();
 
             //保存消息到数据库,并且标记为未签收
-            ChatMsgService chatMsgService = (ChatMsgService) SpringUtils.getBean("userServiceImpl");
+            ChatMsgService chatMsgService = (ChatMsgService) SpringUtils.getBean("chatMsgServiceImpl");
             String msgId = chatMsgService.saveMsg(chatMsgNio);
             chatMsgNio.setMsgId(msgId);
 
@@ -74,16 +73,20 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
             Channel receiverChannel = UserChannelRel.get(receiverId);
             if(receiverChannel == null) {
                 //TODO channel为空代表用户离线, 推送消息(第三方推送: JPush, 个推, 小米推送)
+                Sender sender = SpringUtils.getBean(Sender.class);
+                sender.send(JsonUtils.objectToJson(dataContentMsg));
             } else {
                 //当receiverChannel不为空的时候, 从ChannelGroup中去查找对应的Channel是否存在
                 Channel findChannel = users.find(receiverChannel.id());
                 log.info("接收消息: " + dataContentMsg.toString());
                 if(findChannel != null) {
+                    log.info("channelId: " + receiverChannel.id() + " 用户在线");
                     //用户在线
                     findChannel.writeAndFlush(
                             new TextWebSocketFrame(
                                     JsonUtils.objectToJson(dataContentMsg)));
                 } else {
+                    log.info("channelId: " + receiverChannel.id() + " 用户离线");
                     //用户离线 TODO 推送消息
                 }
             }

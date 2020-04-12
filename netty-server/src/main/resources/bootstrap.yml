@@ -27,3 +27,8 @@ management:
     web:
       exposure:
         include: "*"
+mybatis-plus:
+  #configuration:
+  #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #配置控制台打印sql日志
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.clf.cloud.nettyserver.domain

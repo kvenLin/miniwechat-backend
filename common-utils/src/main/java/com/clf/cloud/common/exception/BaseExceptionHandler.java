@@ -69,7 +69,7 @@ public class BaseExceptionHandler {
             result.setMsg(String.format(result.getMsg(),exception.getMethod()));
             return result;
         }else {
-            log.error(e.getMessage());
+            e.printStackTrace();
             String requestURI = request.getRequestURI();
             log.error("请求异常的接口:{}",requestURI);
             BaseResponseVO<String> error = BaseResponseVO.error(ErrorEnum.SERVER_ERROR);
