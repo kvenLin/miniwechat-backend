@@ -39,7 +39,10 @@ redis:
 fdfs:
   so-timeout: 15001
   connect-timeout: 15001
+  thumb-image:             #缩略图生成参数
+    width: 80
+    height: 80
   tracker-list[0]: 121.36.108.189:22122
 tmpFilePath: "/Users/mac/Downloads/tmp/"
-defaultImage: "M00/00/00/rBDLCV5GQmOAcsypAAALkzq5T6A811_80x80.png"
-defaultImageBig: "M00/00/00/rBDLCV5GQmOAcsypAAALkzq5T6A811.png"
+defaultImage: "M00/00/00/wKgAnl6W3sKAAs_GAAAHJxi1FZo416_80x80.png"
+defaultImageBig: "M00/00/00/wKgAnl6W3sKAAs_GAAAHJxi1FZo416.png"

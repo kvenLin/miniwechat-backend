@@ -6,60 +6,27 @@
     <result column="my_user_id" jdbcType="VARCHAR" property="myUserId" />
     <result column="my_friend_user_id" jdbcType="VARCHAR" property="myFriendUserId" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, my_user_id, my_friend_user_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from my_friends
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from my_friends
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.clf.cloud.userserver.domain.MyFriends" useGeneratedKeys="true">
-    insert into my_friends (my_user_id, my_friend_user_id)
-    values (#{myUserId,jdbcType=VARCHAR}, #{myFriendUserId,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.clf.cloud.userserver.domain.MyFriends" >
+    insert into my_friends (id, my_user_id, my_friend_user_id
+      )
+    values (#{id,jdbcType=VARCHAR}, #{myUserId,jdbcType=VARCHAR}, #{myFriendUserId,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.clf.cloud.userserver.domain.MyFriends" useGeneratedKeys="true">
-    insert into my_friends
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="myUserId != null">
-        my_user_id,
-      </if>
-      <if test="myFriendUserId != null">
-        my_friend_user_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="myUserId != null">
-        #{myUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="myFriendUserId != null">
-        #{myFriendUserId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.clf.cloud.userserver.domain.MyFriends">
-    update my_friends
-    <set>
-      <if test="myUserId != null">
-        my_user_id = #{myUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="myFriendUserId != null">
-        my_friend_user_id = #{myFriendUserId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.clf.cloud.userserver.domain.MyFriends">
+  <update id="updateByPrimaryKey" parameterType="com.clf.cloud.userserver.domain.MyFriends" >
     update my_friends
     set my_user_id = #{myUserId,jdbcType=VARCHAR},
       my_friend_user_id = #{myFriendUserId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, my_user_id, my_friend_user_id
+    from my_friends
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
   <select id="selectByMyUserIdAndFriendId" resultMap="BaseResultMap" parameterType="java.lang.String">
     select id, my_user_id, my_friend_user_id
     from my_friends

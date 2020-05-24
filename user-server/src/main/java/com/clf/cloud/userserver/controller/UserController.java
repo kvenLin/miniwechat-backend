@@ -7,6 +7,7 @@ import com.clf.cloud.common.enums.OperatorFriendRequestTypeEnum;
 import com.clf.cloud.common.enums.SearchFriendsStatusEnum;
 import com.clf.cloud.common.exception.CommonException;
 import com.clf.cloud.common.utils.ClientUtils;
+import com.clf.cloud.common.utils.JwtTokenUtils;
 import com.clf.cloud.common.utils.MD5Utils;
 import com.clf.cloud.common.vo.BaseResponseVO;
 import com.clf.cloud.userserver.bo.ContactsBO;
@@ -57,10 +58,19 @@ public class UserController implements UserFeignApis {
     @Autowired
     private ContactService contactService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/queryUserInfo")
     @Override
-    public BaseResponseVO<UsersVO> queryUserInfo(@PathVariable("userId") String userId) {
-        return BaseResponseVO.success(userId);
+    public BaseResponseVO<UsersVO> queryUserInfo(String username) {
+        if(StringUtils.isNotEmpty(username)) {
+            Users users = userService.queryUserInfoByUsername(username);
+            if(users == null) {
+                return BaseResponseVO.error(ErrorEnum.USER_NOT_FOUND);
+            }
+            UsersVO usersVO = new UsersVO();
+            BeanUtils.copyProperties(users, usersVO);
+            return BaseResponseVO.success(usersVO);
+        }
+        return BaseResponseVO.error(ErrorEnum.USER_NOT_FOUND);
     }
 
     @PostMapping("/login")
@@ -85,6 +95,8 @@ public class UserController implements UserFeignApis {
         }
         UsersVO userVO = new UsersVO();
         BeanUtils.copyProperties(userResult, userVO);
+        JwtTokenUtils jwtTokenUtils = new JwtTokenUtils();
+        userVO.setToken(jwtTokenUtils.generateToken(userResult.getUsername(), null));
         return BaseResponseVO.success(userVO);
     }
 
@@ -112,6 +124,9 @@ public class UserController implements UserFeignApis {
         user = userService.saveUser(user);
         UsersVO userVO = new UsersVO();
         BeanUtils.copyProperties(user, userVO);
+        JwtTokenUtils jwtTokenUtils = new JwtTokenUtils();
+        String token = jwtTokenUtils.generateToken(user.getUsername(), null);
+        userVO.setToken(token);
         return BaseResponseVO.success(userVO);
     }
 

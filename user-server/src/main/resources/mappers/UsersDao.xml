@@ -24,85 +24,21 @@
     <result column="nickname" property="friendNickname" jdbcType="VARCHAR"/>
     <result column="face_image" property="friendFaceImage" jdbcType="VARCHAR"/>
   </resultMap>
-  <sql id="Base_Column_List">
-    id, username, `password`, face_image, face_image_big, nickname, qrcode, cid, mobile
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from users
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from users
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.clf.cloud.userserver.domain.Users" useGeneratedKeys="true">
-    insert into users (username, `password`, face_image, 
-      face_image_big, nickname, qrcode, 
-      cid, mobile)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{faceImage,jdbcType=VARCHAR}, 
-      #{faceImageBig,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, 
-      #{cid,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.clf.cloud.userserver.domain.Users" >
+    insert into users (id, username, `password`,
+      face_image, face_image_big, nickname,
+      qrcode, cid, mobile)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{faceImage,jdbcType=VARCHAR}, #{faceImageBig,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+      #{qrcode,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.clf.cloud.userserver.domain.Users" useGeneratedKeys="true">
-    insert into users
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="faceImage != null">
-        face_image,
-      </if>
-      <if test="faceImageBig != null">
-        face_image_big,
-      </if>
-      <if test="nickname != null">
-        nickname,
-      </if>
-      <if test="qrcode != null">
-        qrcode,
-      </if>
-      <if test="cid != null">
-        cid,
-      </if>
-      <if test="mobile != null">
-        mobile,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="faceImage != null">
-        #{faceImage,jdbcType=VARCHAR},
-      </if>
-      <if test="faceImageBig != null">
-        #{faceImageBig,jdbcType=VARCHAR},
-      </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="qrcode != null">
-        #{qrcode,jdbcType=VARCHAR},
-      </if>
-      <if test="cid != null">
-        #{cid,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.clf.cloud.userserver.domain.Users">
+  <update id="updateByPrimaryKey" parameterType="com.clf.cloud.userserver.domain.Users" >
     update users
-    <set>
+    <trim prefix="set" suffixOverrides=",">
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
@@ -127,19 +63,7 @@
       <if test="mobile != null">
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.clf.cloud.userserver.domain.Users">
-    update users
-    set username = #{username,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      face_image = #{faceImage,jdbcType=VARCHAR},
-      face_image_big = #{faceImageBig,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      qrcode = #{qrcode,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR}
+    </trim>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="queryFriendRequestList" resultMap="SendUserResultMap" parameterType="java.lang.String">
@@ -148,6 +72,11 @@
     left join users sender
     on fr.send_user_id = sender.id
     where fr.accept_user_id = #{acceptUserId}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, username, `password`, face_image, face_image_big, nickname, qrcode, cid, mobile
+    from users
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, username, `password`, face_image, face_image_big, nickname, qrcode, cid, mobile

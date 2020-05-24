@@ -8,11 +8,7 @@ public interface FriendsRequestDao {
 
     int insert(FriendsRequest record);
 
-    int insertSelective(FriendsRequest record);
-
     FriendsRequest selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(FriendsRequest record);
 
     int updateByPrimaryKey(FriendsRequest record);
 

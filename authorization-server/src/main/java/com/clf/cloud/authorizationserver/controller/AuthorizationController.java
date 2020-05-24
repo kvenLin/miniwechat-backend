@@ -27,21 +27,20 @@ public class AuthorizationController implements AuthorizationFeignApis {
 
     @PostMapping("/check")
     @Override
-    public BaseResponseVO check(String headerString) {
-        if(StringUtils.isNotEmpty(headerString) && headerString.startsWith("Bearer ")) {
-            String authToken = headerString.substring(7);
+    public BaseResponseVO check(String authToken) {
+        if(StringUtils.isNotEmpty(authToken)) {
             JwtTokenUtils jwtTokenUtil = new JwtTokenUtils();
             boolean flag = jwtTokenUtil.isTokenExpired(authToken);
             if (!flag) {
                 // 2、解析出JWT中的payload -> userid - randomkey
-                String randomkey = jwtTokenUtil.getMd5KeyFromToken(authToken);
-                String userId = jwtTokenUtil.getUsernameFromToken(authToken);
+//                String randomkey = jwtTokenUtil.getMd5KeyFromToken(authToken);
+                String username = jwtTokenUtil.getUsernameFromToken(authToken);
                 // 3、是否需要验签,以及验签的算法
 
                 // 4、判断userid是否有效
-                BaseResponseVO<UsersVO> userInfo = userFeignApis.queryUserInfo(userId);
-                if (userInfo.getCode() == HttpStatus.OK.value() &&
-                        userId.equals(userInfo.getData().getId())) {
+                BaseResponseVO<UsersVO> userInfo = userFeignApis.queryUserInfo(username);
+                if (userInfo.getStatus() == HttpStatus.OK.value() &&
+                        username.equals(userInfo.getData().getId())) {
                     return BaseResponseVO.success();
                 }
             }

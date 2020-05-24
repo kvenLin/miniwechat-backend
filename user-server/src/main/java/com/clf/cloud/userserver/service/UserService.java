@@ -1,12 +1,9 @@
 package com.clf.cloud.userserver.service;
 
-import com.clf.cloud.api.netty.ChatMsgNio;
 import com.clf.cloud.userserver.domain.ChatMsg;
 import com.clf.cloud.userserver.domain.Users;
 import com.clf.cloud.userserver.vo.FriendRequestVO;
 import com.clf.cloud.userserver.vo.MyFriendsVO;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

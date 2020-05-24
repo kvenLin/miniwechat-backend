@@ -9,6 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public enum ErrorEnum {
+    AUTH_ERROR(401, "认证失败"),
     NOT_FOUND(404, "请求有问题，请联系管理员"),
     SERVER_ERROR(500,"服务器未知错误:%s" ),
     MOBILE_FORMAT_ERROR(501, "手机号格式错误"),

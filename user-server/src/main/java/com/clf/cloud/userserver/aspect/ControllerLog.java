@@ -38,7 +38,7 @@ public class ControllerLog {
     @AfterReturning(pointcut = "controller()",returning = "ret")
     public void after(Object ret){
         BaseResponseVO result = (BaseResponseVO) ret;
-        if (result!=null&&result.getCode()!=200){
+        if (result!=null&&result.getStatus()!=200){
             log.error(result.getMsg());
         }
         log.warn("controller返回参数："+result);

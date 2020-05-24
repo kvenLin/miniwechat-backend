@@ -8,11 +8,7 @@ public interface MyFriendsDao {
 
     int insert(MyFriends record);
 
-    int insertSelective(MyFriends record);
-
     MyFriends selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(MyFriends record);
 
     int updateByPrimaryKey(MyFriends record);
 

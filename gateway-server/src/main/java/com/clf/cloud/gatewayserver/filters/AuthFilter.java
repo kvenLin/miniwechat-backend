@@ -2,6 +2,7 @@ package com.clf.cloud.gatewayserver.filters;
 
 import com.alibaba.fastjson.JSONObject;
 import com.clf.cloud.api.auth.AuthorizationFeignApis;
+import com.clf.cloud.common.enums.ErrorEnum;
 import com.clf.cloud.common.utils.ClientUtils;
 import com.clf.cloud.common.utils.ToolUtils;
 import com.clf.cloud.common.vo.BaseResponseVO;
@@ -12,6 +13,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -73,6 +75,7 @@ public class AuthFilter extends ZuulFilter {
         ctx.setResponseStatusCode(200);
 
         String servletPath = request.getServletPath();
+        log.info("servletPath: {}", servletPath);
         List<String> anonUrl = authQueryDao.selectAnonUrl();
         log.info("anonUrl: {}", anonUrl);
         if (anonUrl.contains(servletPath)) {
@@ -80,11 +83,15 @@ public class AuthFilter extends ZuulFilter {
             //请求匿名接口直接放行
             return null;
         }
-//        BaseResponseVO responseVO = authorizationFeignApis.check(request.getHeader("Authorization"));
+        String token = request.getHeader("Authorization");
+        BaseResponseVO responseVO = BaseResponseVO.error(ErrorEnum.AUTH_ERROR);
+        if(StringUtils.isNotEmpty(token)) {
+             responseVO = authorizationFeignApis.check(token);
+        }
         //TODO, 测试使用
-        BaseResponseVO responseVO = BaseResponseVO.success();
+//        BaseResponseVO responseVO = BaseResponseVO.success();
         //校验token,对请求的url进行放行
-        if(responseVO.getCode() == HttpStatus.OK.value()) {
+        if(responseVO.getStatus() == HttpStatus.OK.value()) {
             if(servletPath.equals("/netty/link")) {
                 String clientIp = ClientUtils.getClientIpAddress(request);
                 redisService.set(ClientIpAuthKey.getByClientIP, clientIp, "authConnect");

@@ -11,11 +11,7 @@ public interface UsersDao {
 
     int insert(Users record);
 
-    int insertSelective(Users record);
-
     Users selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
 

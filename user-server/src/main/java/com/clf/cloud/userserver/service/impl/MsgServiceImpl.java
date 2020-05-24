@@ -39,7 +39,7 @@ public class MsgServiceImpl implements MsgService {
         }
         String code = CodeMsgUtils.generateCode();
         BaseResponseVO result = CodeMsgUtils.send(mobile, code);
-        if(result.getCode() == HttpStatus.SC_OK) {
+        if(result.getStatus() == HttpStatus.SC_OK) {
             log.warn("发送验证成功, verifyCode: " + code);
             //redis保存ip-code & mobile-code 并设置有效时长3分钟
             redisService.set(MsgCodeKey.getByClientIP, ip, code);
